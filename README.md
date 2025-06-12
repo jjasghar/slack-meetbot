@@ -2,6 +2,8 @@
 
 A Python-based Slackbot that helps drive and manage meetings in Slack channels. It tracks participation, records minutes, manages action items, and provides detailed meeting statistics.
 
+Note: You miss [meetbot](https://wiki.debian.org/MeetBot) from IRC? Well here is the next generation for Slack.
+
 ## Features
 
 - 📝 Meeting Management
@@ -82,68 +84,26 @@ A Python-based Slackbot that helps drive and manage meetings in Slack channels. 
    python app.py
    ```
 
-## Debugging
-
-The bot includes a comprehensive logging system that can be enabled by setting `DEBUG=true` in your `.env` file. When debug mode is enabled, you'll see detailed information about:
-
-- Application startup and initialization
-- Command reception and processing
-- Database operations
-- Error details
-- Message handling
-- User interactions
-
-Debug logs include timestamps and log levels, making it easier to track down issues. Example debug output:
-
-```
-2024-01-20 10:30:45 - meetbot - INFO - Debug mode is enabled - you'll see detailed logging
-2024-01-20 10:30:45 - meetbot - INFO - Slack app initialized successfully
-2024-01-20 10:30:45 - meetbot - INFO - Database initialized successfully
-2024-01-20 10:30:45 - meetbot - INFO - Jinja2 environment initialized successfully
-2024-01-20 10:30:45 - meetbot - INFO - Starting Slack MeetBot...
-2024-01-20 10:30:45 - meetbot - INFO - Bot is ready! Listening for events...
-2024-01-20 10:31:00 - meetbot - DEBUG - Received /meeting command: {...}
-```
-
-To enable debug mode:
-1. Add `DEBUG=true` to your `.env` file
-2. Restart the bot
-3. Watch the console for detailed logging information
-
-To disable debug mode:
-1. Set `DEBUG=false` in your `.env` file (or remove the line)
-2. Restart the bot
-
 ## Commands
 
 The bot supports both slash commands and message-based commands with the `!` prefix. You can use either format:
 
 ### Meeting Management
-- Start a meeting:
-  - `/meeting start` or `!meeting start`
-- End a meeting:
-  - `/meeting end` or `!meeting end`
+- Start a meeting: `!meeting start`
+- End a meeting: `!meeting end`
 
 ### Role Management
-- Change the chair:
-  - `/chair @user` or `!chair @user`
-- Add a co-chair:
-  - `/cochair @user` or `!cochair @user`
+- Change the chair: `!chair @user`
+- Add a co-chair: `!cochair @user`
 
 ### Action Items and Stats
-- Create an action item:
-  - `/action @user task` or `!action @user task`
-- View participation stats:
-  - `/stats` or `!stats`
-- Export meeting minutes:
-  - `/export` or `!export`
+- Create an action item: `!action @user task`
+- View participation stats: `!stats`
+- Export meeting minutes: `!export`
 
 ### Karma System
-- View karma standings:
-  - `/karma` or `!karma`
-- Give karma points:
-  - `/karma @user` or `!karma @user`
-  - `@user++` (alternative syntax)
+- View karma standings: `!karma`
+- Give karma points: `!karma @user` or `@user++` (alternative syntax)
 
 ## Meeting Minutes Export
 
@@ -168,29 +128,15 @@ The bot uses SQLite for data storage. The database (`meetbot.db`) will be create
 
 The karma system allows team members to recognize and appreciate each other's contributions. There are three ways to give karma points:
 
-1. Using the slash command:
-   ```
-   /karma @user
-   ```
-
-2. Using the message command:
+1. Using the message command:
    ```
    !karma @user
    ```
 
-3. Using the ++ syntax:
+2. Using the ++ syntax:
    ```
    @user++
    ```
-
-To view karma standings, use either:
-```
-/karma
-```
-or
-```
-!karma
-```
 
 Rules:
 - Users cannot give karma points to themselves
@@ -200,4 +146,28 @@ Rules:
 
 ## Contributing
 
-Feel free to submit issues and enhancement requests! 
+Feel free to submit issues and enhancement requests!
+
+## License & Authors
+
+If you would like to see the detailed LICENSE click [here](./LICENSE).
+
+- Author: JJ Asghar <awesome@ibm.com>
+
+```text
+Copyright:: 2025- IBM, Inc
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
+
+PS: Yes I "vibecoded" this with Cursor. It did suprisingly well.
